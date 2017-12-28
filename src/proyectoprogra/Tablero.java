@@ -96,6 +96,8 @@ public class Tablero extends JLayeredPane {
                             //arraceldas
                             //celda.setPieza(null);
                             clickPieza.nuevaPosicion(celda.getLocation());
+                                System.out.println("npos>"+celda.posX()+">"+celda.posY());
+                                System.out.println("npos>"+celda.getLocation());
                             cambioPosicion = true;
                             if(turno == 0 ){
                                 turno = 1;

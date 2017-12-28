@@ -36,4 +36,9 @@ public class Alfil extends Pieza {
         }
         return false;
     }
+
+    @Override
+    void comio(int newX, int newyY) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

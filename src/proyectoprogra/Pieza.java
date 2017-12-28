@@ -37,5 +37,7 @@ abstract class Pieza extends Componente {
     }
 
     abstract boolean validarMovimiento(int newx, int newy);
+    
+    abstract void comio(int newX, int newyY);
 
 }

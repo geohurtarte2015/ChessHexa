@@ -5,9 +5,11 @@
  */
 package proyectoprogra;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+
 import javax.swing.JPanel;
 
 /**
@@ -18,15 +20,17 @@ public class ArchivoPieza {
 
     private int x;
     private int y;
+    private int linea, columna;
     private JPanel inter;
     private int contador = 1;
+    static Pieza[][] piezas = new Pieza[11][21];
 
     public ArchivoPieza(JPanel interfaz) {
         inter = interfaz;
     }
+    Celda celdita;
 
     public Pieza[][] leer() {
-        Pieza[][] piezas = new Pieza[2][18];
 
         File file;
         FileReader filer;
@@ -40,25 +44,29 @@ public class ArchivoPieza {
             int posY = 0;
 
             while ((aux = br.readLine()) != null) {
+
                 String[] arch = aux.split(",");
+
                 posX = 0;
                 for (int i = 0; i < arch.length; i++) {
+
                     // Piezas Negras
                     if (arch[i].equalsIgnoreCase("P")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
-
-                        //piezas[Pieza.NEGRAS][1] = new Peon(x, y, posX, posY, Pieza.NEGRAS);
+                       // System.out.println(posX + " Columna " + posY + " Fila" );
+                        piezas[posX][posY] = new Peon(x, y, posX, posY, Pieza.NEGRAS);
                         //inter.add(piezas[Pieza.NEGRAS][val]);
                         //celdas[posX][posY].setPieza(piezas[Pieza.NEGRAS][1]);
                         inter.add(new Peon(x, y, posX, posY, Pieza.NEGRAS));
-                        //System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
+                        System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
                         //System.out.println("X " + x + "Y"  + y);
                     }
 
                     if (arch[i].equalsIgnoreCase("A")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
+
                         piezas[Pieza.NEGRAS][contador] = new Alfil(x, y, posX, posY, Pieza.NEGRAS);
                         inter.add(piezas[Pieza.NEGRAS][contador]);
 
@@ -94,6 +102,7 @@ public class ArchivoPieza {
                     if (arch[i].equalsIgnoreCase("P1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
+
                         inter.add(new Peon(x, y, posX, posY, Pieza.BLANCAS));
                         //System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
                     }
@@ -134,6 +143,7 @@ public class ArchivoPieza {
                 posY++;
 
                 l = l + aux + "\n";
+                linea++;
             }
             br.close();
             filer.close();

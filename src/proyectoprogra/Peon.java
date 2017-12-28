@@ -12,9 +12,10 @@ import javax.swing.ImageIcon;
  * @author Dash
  */
 public class Peon extends Pieza {
-
+    private Pieza[][] piezaTemp = new Pieza[11][21];
+    
     public Peon(int posx, int posy, int x, int y, int bando) {
-        super(bando, posx, posy, x, y);
+        super(bando, posx, posy, x, y);        
         if (bando == BLANCAS) {
             this.setIcon(new ImageIcon("src/Images/peon2.png"));
         } else {
@@ -25,21 +26,20 @@ public class Peon extends Pieza {
     @Override
     boolean validarMovimiento(int newx, int newy) {
 
-        System.out.println(movimiento + "fuera");
-
         if (bando == BLANCAS) {
             if (x == newx && y != newy && y > newy) {
                 if (movimiento == 0) {
                     if (y - newy < 5 || y - newy < 3) {
                         super.y = newy;
                         movimiento++;
-                        System.out.println(movimiento + "adentro");
+                        //comio(1, 16);
                         return true;
                     }
                 }
                 if (movimiento > 0) {
                     if (y - newy < 3) {
                         super.y = newy;
+
                         return true;
                     }
                 }
@@ -57,6 +57,13 @@ public class Peon extends Pieza {
         }
 
         return false;
+    }
+
+    @Override
+    void comio(int newX, int newyY) {
+        System.out.println(ArchivoPieza.piezas[newX][newyY].getBando());
+       
+        
     }
 
 }
