@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import javax.swing.JPanel;
 
+
 /**
  *
  * @author Bruce
@@ -17,7 +18,9 @@ import javax.swing.JPanel;
 public class Archivo {
     
     private int x;
+    
     private int y;
+    
     private JPanel inter;
     Celda[][] celdas = new Celda[11][21];
     
