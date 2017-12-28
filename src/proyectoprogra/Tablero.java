@@ -41,6 +41,7 @@ public class Tablero extends JLayeredPane {
         private int agarraAnchura;
         private int agarraAltura;
         private Point posicionAnterior;
+        private int turno = 0;
 
         public EventosMouse(JPanel casillas, JPanel piezas) {
             this.casillas = casillas;
@@ -81,6 +82,7 @@ public class Tablero extends JLayeredPane {
 
         @Override
         public void mouseReleased(MouseEvent me) {
+
             if (clickPieza != null) {
                 remove(clickPieza);
                 boolean cambioPosicion = false;
@@ -88,14 +90,25 @@ public class Tablero extends JLayeredPane {
                 if (componente != null) {
                     if (componente instanceof Celda) {
                         Celda celda = (Celda) componente;
-                        if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
+                        if(turno == clickPieza.getBando()){
+                            
+                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
                             //arraceldas
                             //celda.setPieza(null);
                             clickPieza.nuevaPosicion(celda.getLocation());
                             cambioPosicion = true;
+                            if(turno == 0 ){
+                                turno = 1;
+                            }else {
+                                turno = 0;
+                            }
                         }
-                        clickPieza.nuevaPosicion(celda.getLocation());
-                        cambioPosicion = true;
+                            
+                            
+                        }
+                        
+                        //clickPieza.nuevaPosicion(celda.getLocation());
+                        //cambioPosicion = true;
                     }
                 }
                 if (!cambioPosicion) {
@@ -106,6 +119,7 @@ public class Tablero extends JLayeredPane {
                 clickPieza = null;
                 repaint();
             }
+
         }
     }
 

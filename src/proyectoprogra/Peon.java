@@ -24,16 +24,38 @@ public class Peon extends Pieza {
 
     @Override
     boolean validarMovimiento(int newx, int newy) {
+
+        System.out.println(movimiento + "fuera");
+
         if (bando == BLANCAS) {
-            if (x == newx && y != newy) {
-                System.out.println("X " +  x + " Y " + y + "NewX " + newx + "NewY " +newy );
-                return true;
+            if (x == newx && y != newy && y > newy) {
+                if (movimiento == 0) {
+                    if (y - newy < 5 || y - newy < 3) {
+                        super.y = newy;
+                        movimiento++;
+                        System.out.println(movimiento + "adentro");
+                        return true;
+                    }
+                }
+                if (movimiento > 0) {
+                    if (y - newy < 3) {
+                        super.y = newy;
+                        return true;
+                    }
+                }
             }
-        } else {
+
+        }
+
+        if (bando == NEGRAS) {
+
             if (x == newx) {
                 return true;
+
             }
+
         }
+
         return false;
     }
 
