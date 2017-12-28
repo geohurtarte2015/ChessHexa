@@ -88,14 +88,14 @@ public class Tablero extends JLayeredPane {
                 if (componente != null) {
                     if (componente instanceof Celda) {
                         Celda celda = (Celda) componente;
-                        /*if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
+                        if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
                             //arraceldas
                             //celda.setPieza(null);
                             clickPieza.nuevaPosicion(celda.getLocation());
                             cambioPosicion = true;
-                        }*/
-                         clickPieza.nuevaPosicion(celda.getLocation());
-                         cambioPosicion = true;
+                        }
+                        clickPieza.nuevaPosicion(celda.getLocation());
+                        cambioPosicion = true;
                     }
                 }
                 if (!cambioPosicion) {

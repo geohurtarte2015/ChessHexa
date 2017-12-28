@@ -52,8 +52,8 @@ public class ArchivoPieza {
                         //inter.add(piezas[Pieza.NEGRAS][val]);
                         //celdas[posX][posY].setPieza(piezas[Pieza.NEGRAS][1]);
                         inter.add(new Peon(x, y, posX, posY, Pieza.NEGRAS));
-                        System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
-                        System.out.println("X " + x + "Y"  + y);
+                        //System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
+                        //System.out.println("X " + x + "Y"  + y);
                     }
 
                     if (arch[i].equalsIgnoreCase("A")) {
